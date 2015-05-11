@@ -65,6 +65,27 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="app.css" />
+    <Content Include="js\solution.js" />
+    <Content Include="ng\routes.js" />
+    <Content Include="ng\app.js" />
+    <Content Include="components\version\interpolate-filter.js" />
+    <Content Include="components\version\interpolate-filter_test.js" />
+    <Content Include="components\version\version-directive.js" />
+    <Content Include="components\version\version-directive_test.js" />
+    <Content Include="components\version\version.js" />
+    <Content Include="components\version\version_test.js" />
+    <Content Include="index-async.html" />
+    <Content Include="index.html" />
+    <Content Include="templates\nav.html" />
+    <Content Include="templates\solution.html" />
+    <Content Include="templates\instructions.html" />
+    <Content Include="intro\view1.html" />
+    <Content Include="intro\view1.js" />
+    <Content Include="intro\view1_test.js" />
+    <Content Include="view2\view2.html" />
+    <Content Include="view2\view2.js" />
+    <Content Include="view2\view2_test.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>

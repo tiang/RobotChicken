@@ -5,6 +5,14 @@ VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RobotChicken", "RobotChicken.csproj", "{F184D852-0375-4054-9C80-41964BB1A05C}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{0A89612D-8EBD-4B5F-997E-54A3F6614213}"
+	ProjectSection(SolutionItems) = preProject
+		..\bower.json = ..\bower.json
+		..\karma.conf.js = ..\karma.conf.js
+		..\package.json = ..\package.json
+		..\README.md = ..\README.md
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

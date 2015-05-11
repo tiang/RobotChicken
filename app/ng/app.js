@@ -6,3 +6,6 @@ rc.App = angular.module('RobotChickenApp', [
   'ngRoute',
 ])
 
+rc.App.config(['$locationProvider', function ($locationProvider) {
+    $locationProvider.html5Mode(true).hashPrefix('!');
+}]);
