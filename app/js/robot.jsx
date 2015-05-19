@@ -1,3 +1,4 @@
+// cute little 2d matrix to add increment direction
 const directionMatrix = {
             'n': {x: 0, y: 1},
             'e': {x: 1, y: 0},
@@ -5,19 +6,20 @@ const directionMatrix = {
             'w': {x: -1, y: 0}
         };
 
-//todo: make this an iterator
 const directionArray = ['n','e','s','w'];
+const maxY = 5;
+const maxX = 5;
 
 class Robot
 {
-    
-    constructor(x, y, direction)
+    constructor(x = 0, y = 0, direction = 'n')
     {
         this.x = x;
         this.y = y;
         
         this.direction = direction.charAt(0);
-
+        
+        this.debug = false; // log to console if true
         //console.log(directionMatrix);
 
         // check that direction is valid
@@ -26,48 +28,62 @@ class Robot
             console.log('invalid constructor');
             throw 'invalid constructor';
         }
-
-        console.log()
     }
 
-    get xCoordinate() {
-        return this.x;
+    place({x=0, y=0, direction='n'}) {
+        this.x = x;
+        this.y = y;
+        this.direction = direction;   
     }
-    
 
     move() {
-        console.log('moving');
-        console.log(directionMatrix[this.direction])
+        this.log('moving');
+        this.log(directionMatrix[this.direction])
+        // array starts at zero, so max# - 1
+        if (this.y + directionMatrix[this.direction].y >= maxY 
+            || this.x + directionMatrix[this.direction].x >= maxX) 
+        {
+            this.log('falling off the table...not moving');
+            return;
+        }
         this.y += directionMatrix[this.direction].y
         this.x += directionMatrix[this.direction].x
-        console.log('x value ' +this.x);
-        console.log('y value ' +this.y);
+        this.log('x value ' +this.x);
+        this.log('y value ' +this.y);
     }
 
     right() {
-        console.log('turning right from ' + this.direction);
+        this.log('turning right from ' + this.direction);
         let index = directionArray.indexOf(this.direction);
         this.direction = directionArray[(index+1) % 4];
-        console.log('new direction ' +this.direction);
+        this.log('new direction ' +this.direction);
     }
 
     left() {
-        console.log('turning left from ' + this.direction);
+        this.log('turning left from ' + this.direction);
         let index = directionArray.indexOf(this.direction);
-        console.log('index' + index);
         if (index == 0)
-            index = 3;
+            index = directionArray.length -1;
         else 
             index--;
         this.direction = directionArray[index];
-        console.log('new direction ' + this.direction);
+        this.log('new direction ' + this.direction);
     }
 
     report() {
-        return {x: this.x, y: this.y }
+        return {x: this.x, y: this.y, direction: this.direction }
     }
 
+    log(_x) {
+        if (this.debug == true)
+            console.log(_x);
+    } 
+    
 }
 
-module.exports  = Robot;
+var myRobot;
+// basically a wrapper for the robot object constructor as per instructions
+var place = (x,y,d) => { myRobot = new Robot(x,y,d); return myRobot;} 
+
+module.exports  = {Robot, place, myRobot};
 
