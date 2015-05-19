@@ -59,7 +59,7 @@ var Robot = (function () {
             this.log('moving');
             this.log(directionMatrix[this.direction]);
             // array starts at zero, so max# - 1
-            if (this.y + directionMatrix[this.direction].y >= maxY || this.x + directionMatrix[this.direction].x >= maxX) {
+            if (this.y + directionMatrix[this.direction].y >= maxY || this.x + directionMatrix[this.direction].x >= maxX || this.y + directionMatrix[this.direction].y < 0 || this.x + directionMatrix[this.direction].x < 0) {
                 this.log('falling off the table...not moving');
                 return;
             }
