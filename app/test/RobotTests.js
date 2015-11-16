@@ -4,12 +4,9 @@ var Robot = app.Robot;
 var Place = app.place;
 var myRobot = app.myRobot;
 
-
-
 describe('Robot', function(){
   	describe('TDD tests', function(){
 	    it('constructor works', function(){
-	    	//console.log(Robot);
 	    	var xValue = 0;
 	    	var yValue = 0;
 	    	var directionValue = 'north';
@@ -21,7 +18,6 @@ describe('Robot', function(){
 
 	    })
 	    it('Robot Moves left', function(){
-	    	//console.log(Robot);
 	    	var xValue = 0;
 	    	var yValue = 0;
 	    	var directionValue = 'north';
@@ -38,7 +34,6 @@ describe('Robot', function(){
 		    assert.equal(myRobot.direction, 'w');
 	    })
 	    it('Robot Moves right', function(){
-	    	//console.log(Robot);
 	    	var xValue = 0;
 	    	var yValue = 0;
 	    	var directionValue = 'west';
@@ -55,26 +50,97 @@ describe('Robot', function(){
 		    assert.equal(myRobot.direction, 'n');
 	    })
 	    it('Place Robot', function(){
-	    	//console.log(Robot);
 	    	var xValue = 0;
 	    	var yValue = 0;
 	    	var directionValue = 'west';
 	    	var myRobot = Place(xValue, yValue, directionValue);
-		    //console.log(myRobot.report());
 		    assert.equal(myRobot.x, xValue);
 		    assert.equal(myRobot.y, yValue);
 		    assert.equal(myRobot.direction, 'w');
 	    })
 	    it('Push the robot off the table', function(){
-	    	//console.log(Robot);
-	    	var xValue = 4;
-	    	var yValue = 4;
+	    	var xValue = 0;
+	    	var yValue = 0;
 	    	var directionValue = 'north';
 	    	var myRobot = Place(xValue, yValue, directionValue);
 	    	myRobot.move();
-		    //console.log(myRobot.report());
+	    	myRobot.move();
+	    	myRobot.move();
+	    	myRobot.move();
+	    	myRobot.move();
+	    	myRobot.move();
 		    assert.equal(myRobot.x, xValue);
-		    assert.equal(myRobot.y, yValue);
+		    assert.equal(myRobot.y, 4);
+		    assert.equal(myRobot.direction, 'n');
+	    })
+	   	it('Push the robot off the table bottom', function(){
+	    	var xValue = 0;
+	    	var yValue = 0;
+	    	var directionValue = 'south';
+	    	var myRobot = Place(xValue, yValue, directionValue);
+	    	myRobot.move();
+	    	myRobot.move();
+	    	myRobot.move();
+	    	myRobot.move();
+	    	myRobot.move();
+	    	myRobot.move();
+		    assert.equal(myRobot.x, 0);
+		    assert.equal(myRobot.y, 0);
+		    assert.equal(myRobot.direction, 's');
+	    })
+	   	it('Push the robot off the table right', function(){
+	    	//console.log(Robot);
+	    	var xValue = 0;
+	    	var yValue = 0;
+	    	var directionValue = 'east';
+	    	var myRobot = Place(xValue, yValue, directionValue);
+	    	myRobot.move();
+	    	myRobot.move();
+	    	myRobot.move();
+	    	myRobot.move();
+	    	myRobot.move();
+	    	myRobot.move();
+		    assert.equal(myRobot.x, 4);
+		    assert.equal(myRobot.y, 0);
+		    assert.equal(myRobot.direction, 'e');
+	    })
+	   	it('Push the robot off the table left', function(){
+	    	var xValue = 0;
+	    	var yValue = 0;
+	    	var directionValue = 'west';
+	    	var myRobot = Place(xValue, yValue, directionValue);
+	    	myRobot.move();
+	    	myRobot.move();
+	    	myRobot.move();
+	    	myRobot.move();
+	    	myRobot.move();
+	    	myRobot.move();
+		    assert.equal(myRobot.x, 0);
+		    assert.equal(myRobot.y, 0);
+		    assert.equal(myRobot.direction, 'w');
+	    })
+	    it('Push the robot off the table at random', function(){
+	    	var xValue = 3;
+	    	var yValue = 3;
+	    	var directionValue = 'north';
+	    	var myRobot = Place(xValue, yValue, directionValue);
+	    	myRobot.move();
+    	 	myRobot.move();
+	 	 	myRobot.move();
+		    assert.equal(myRobot.x, 3);
+		    assert.equal(myRobot.y, 4);
+		    assert.equal(myRobot.direction, 'n');
+	    })
+	   	it('Move a robot that has not been placed', function(){
+	    	var xValue = 3;
+	    	var yValue = 3;
+	    	var directionValue = 'north';
+	    	var myRobot = Place(xValue, yValue, directionValue);
+	    	myRobot.move();
+    	 	myRobot.move();
+	 	 	myRobot.move();
+		    assert.equal(myRobot.x, 3);
+		    assert.equal(myRobot.y, 4);
 		    assert.equal(myRobot.direction, 'n');
 	    })
   	})
@@ -88,7 +154,7 @@ describe('Tests from example', function() {
     	var myRobot = Place(xValue, yValue, directionValue);
     	myRobot.move();
     	myRobot.report()
-	    //console.log(myRobot.report());
+	   
 	    assert.equal(myRobot.x, 0);
 	    assert.equal(myRobot.y, 1);
 	    assert.equal(myRobot.direction, 'n');
@@ -100,7 +166,6 @@ describe('Tests from example', function() {
     	var myRobot = Place(xValue, yValue, directionValue);
     	myRobot.left();
     	myRobot.report()
-	    //console.log(myRobot.report());
 	    assert.equal(myRobot.x, 0);
 	    assert.equal(myRobot.y, 0);
 	    assert.equal(myRobot.direction, 'w');
@@ -115,7 +180,6 @@ describe('Tests from example', function() {
     	myRobot.left();
     	myRobot.move();
     	myRobot.report();
-	    //console.log(myRobot.report());
 	    assert.equal(myRobot.x, 3);
 	    assert.equal(myRobot.y, 3);
 	    assert.equal(myRobot.direction, 'n');
